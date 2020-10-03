@@ -7,7 +7,7 @@ import { Input, FormBtn } from "../components/Form";
 
 class Login extends Component {
 
-    loginPath = (process.env.NODE_ENV === "production") ? "http://localhost:3001/oauth/google";
+    loginPath = "http://localhost:3001/oauth/google";
 
     render() {
         return (
