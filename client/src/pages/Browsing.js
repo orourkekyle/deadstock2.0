@@ -1,11 +1,12 @@
 // set up browsing (through external api's) components
 import React, { Component } from "react";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
+// import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
 import Shoe from "../components/Shoe";
 import CardDeck from "react-bootstrap/CardDeck";
 import Navy from "../components/Nav";
+import { FormGroup, Row, Col, Container, Form } from "reactstrap";
 
 
 class Browsing extends Component {
@@ -17,8 +18,36 @@ class Browsing extends Component {
         gender: "",
         releaseYear: "",
         colorway: "",
-        message: "Search For A Sneaker To Begin"
+        message: "Search For A Sneaker To Begin",
+        order: "asc"
     };
+
+    sortPriceDesc = () => {
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.retailPrice - b.retailPrice), order: 'desc' });
+                break;
+        }
+    }
+    sortPriceAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.retailPrice - a.retailPrice), order: 'asc' });
+                break;
+        }
+    }
+    sortYearAsc = () => {
+        switch (this.state.order) {
+            case 'desc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => a.year - b.year), order: 'asc' });
+        }
+    }
+    sortYearDesc = () => {
+        switch (this.state.order) {
+            case 'asc':
+                this.setState({ sneakers: this.state.sneakers.sort((a, b) => b.year - a.year), order: 'desc' });
+        }
+    }
 
     // register what gets put into input fields
     handleInputChange = event => {
@@ -95,20 +124,13 @@ class Browsing extends Component {
 
     render() {
         return (
-            // what we need:
-            // container for full page
-            // nav bar to navigate to diff pages
-            // jumbotron (or something similar) to hold search form
-            // search form
-            // place to hold results (i.e. a list or grid or both)
-
             <div>
                 <Navy />
                 <Container>
                     {/* <Nav /> */}
                     <Row>
-                        <Col size="md-8">
-                            <form style={{ justifyContent: "center", textAlign: "center" }}>
+                        <Col sm="6" className="text-center mx-auto">
+                            <FormGroup className="text-center mx-auto">
                                 <Input
                                     onChange={this.handleInputChange}
                                     name="shoeName"
@@ -134,23 +156,31 @@ class Browsing extends Component {
                                     placeholder="Release Year"
                                 />
                                 <div style={{}}>
-                                    <FormBtn
+                                    <FormBtn className="btn btn-success"
                                         onClick={this.handleSearch}
                                     >
-                                        Search
-
+                                       <strong>Search</strong>
                                 </FormBtn>
                                 </div>
-                            </form>
+                            </FormGroup>
                         </Col>
                     </Row>
-
                 </Container>
 
+                <Row className="text-center mx-auto">
+                    <Col>
+                        <FormBtn className="btn btn-primary" onClick={this.sortPriceDesc}> Sort Price from Low to High </FormBtn>
+                        <FormBtn className="btn btn-primary" onClick={this.sortPriceAsc}> Sort Price from High to Low </FormBtn>
+                    </Col>
+                    <Col>
+                    <FormBtn className="btn btn-primary" onClick={this.sortYearDesc}>Sort from Newest to Oldest</FormBtn>
+                        <FormBtn className="btn btn-primary" onClick={this.sortYearAsc}> Sort from Oldest to Newest </FormBtn>
+                    </Col>
+                </Row>
 
                 <div className="shoe-container">
                     {/* <Row> */}
-                        <h1 style={{ margin: "left" }}>Search Results</h1>
+                        {/* <h1 style={{ margin: "left" }}>Search Results</h1> */}
                         {this.state.sneakers.length ? (
                             <CardDeck size="sm-4">
                                 {this.state.sneakers.map(sneaker => (
@@ -172,7 +202,7 @@ class Browsing extends Component {
                                 ))}
                             </CardDeck>
                         ) : (
-                                <h2 className="text-center">Search shoes for results</h2>
+                                <h2 className="text-center" style={{color: "white"}}>Search for Sneakers!</h2>
                             )}
                     {/* </Row> */}
                 </div>

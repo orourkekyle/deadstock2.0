@@ -1,7 +1,8 @@
 // put together our login components (similar to signup)
 import React, { Component } from "react";
 import "./Login.css";
-import { Container, Row, Col } from "../components/Grid";
+// import { Container, Row, Col } from "../components/Grid";
+import { FormGroup, Row, Col, Container, Form } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
 
 
