@@ -13,9 +13,35 @@ import {
   NavbarText
 } from 'reactstrap';
 
+function setRedirect() {
+  let loginPath = "http://localhost:3001/oauth/logout";
+  console.log(document.location.hostname)
+  if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
+      let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
+      console.log("inside if: ", loginPath)
+      return loginPath
+  } else {
+      console.log("inside else: ", loginPath)
+      return loginPath
+  }
+}
+
 const Navy = (props) => {
 
-  let logoutPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/logout" : "http://localhost:3001/oauth/logout"
+  // let logoutPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/logout" : "http://localhost:3001/oauth/logout"
+  // setRedirect = () => {
+  //   let loginPath = "http://localhost:3001/oauth/logout";
+  //   console.log(document.location.hostname)
+  //   if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
+  //       let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
+  //       console.log("inside if: ", loginPath)
+  //       return loginPath
+  //   } else {
+  //       console.log("inside else: ", loginPath)
+  //       return loginPath
+  //   }
+  // }
+
 
   return (
     <div>
@@ -29,7 +55,7 @@ const Navy = (props) => {
                 <NavLink href="/profile">Profile</NavLink>
               </NavItem>
           </Nav>
-          <NavLink href={logoutPath}>Logout</NavLink>
+          <NavLink href={setRedirect()}>Logout</NavLink>
       </Navbar>
     </div>
   );

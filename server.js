@@ -9,6 +9,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const cors = require("cors");
 require("./config/passport");
+require("dotenv");
 
 // define port
 const PORT = process.env.PORT || 3001;

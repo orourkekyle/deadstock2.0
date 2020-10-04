@@ -2,13 +2,31 @@
 import React, { Component } from "react";
 import "./Login.css";
 // import { Container, Row, Col } from "../components/Grid";
-import { FormGroup, Row, Col, Container, Form } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import { Input, FormBtn } from "../components/Form";
 
 
 class Login extends Component {
 
-    loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
+    hostname = document.location.hostname;
+
+    // log(hostname);
+    
+    // loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
+    setRedirect = () => {
+        let loginPath = "http://localhost:3001/oauth/google";
+        console.log(document.location.hostname)
+        if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
+            let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
+            console.log("inside if: ", loginPath)
+            return loginPath
+        } else {
+            console.log("inside else: ", loginPath)
+            return loginPath
+        }
+    }
+
+    // setRedirect()
 
     render() {
         return (
@@ -36,13 +54,9 @@ class Login extends Component {
                             >
                             <strong>Login</strong>
                             </FormBtn>
-                            <a className="nav-link" as='a' href={this.loginPath}>
+                            <a className="nav-link" as='a' href={this.setRedirect()}>
                                 <FormBtn type="button" className="btn btn-danger" >
-                                    {/* <img src={googlePlusimg} alt="google" style={{height: "54px", width: "88px", borderRadius: "6px"}} /> */}
                                     <strong>Google+</strong>
-                                    {/* <span>
-                                        <img src={googleimg} alt="shoe" style={{ width: "30px", float: "right", display: "block", margin: "1px"}} />
-                                    </span> */}
                                 </FormBtn>
                             </a>
                         </form>

@@ -29,7 +29,7 @@ router
 .get(passport.authenticate("google"), (req, res) => {
 //  let redirectPath = "http://localhost:3000"
 let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com" : "http://localhost:3000"
- redirectPath = `${redirectPath}/profile`;
+redirectPath = `${redirectPath}/profile`;
 // redirectPath = `${redirectPath}/search?userId=${req.user.googleId}`
  res.redirect(redirectPath)
 })
