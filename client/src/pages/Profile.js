@@ -5,6 +5,7 @@ import API from "../utils/API";
 import CardDeck from "react-bootstrap/CardDeck";
 import Shoe from "../components/Shoe";
 import { FormBtn } from "../components/Form";
+import Navy from "../components/Nav";
 
 class Profile extends Component{
     state = {
@@ -58,41 +59,44 @@ class Profile extends Component{
 
     render() {
         return (
-            <Container>
-                {this.state.totalprice.length ? (
-                    <div>
-                        <h5>Total Wishlist Amount:</h5>
-                        <p style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</p>
-                    </div>
-                ) : (
-                    <div></div>
-                )}
-                {/* <Row> */}
-                    {this.state.wishlist.length ? (
-                        <CardDeck size="md-8">
-                            {this.state.wishlist.map(sneakers => (
-                                <Shoe 
-                                    key={sneakers.sneakerId}
-                                    shoe={sneakers.shoeName}
-                                    colorway={sneakers.colorway}
-                                    brand={sneakers.brand}
-                                    price={sneakers.retailPrice}
-                                    gender={sneakers.gender}
-                                    year={sneakers.year}
-                                    image={sneakers.image}
-                                    Button={() => (
-                                        <FormBtn className="btn btn-danger"
-                                            onClick={() => this.removeSneaker(sneakers.sneakerId)}
-                                            id="delete-sneaker">Remove From Wishlist</FormBtn>
-                                    )}
-                                />
-                            ))}
-                        </CardDeck>
-                    ) : (
-                        <h1>You Don't Have Any Sneakers In Your Wishlist</h1>
-                    )}
-                {/* </Row> */}
-            </Container>
+            <div>
+                <Navy />
+                    <Container>
+                        {this.state.totalprice.length ? (
+                            <div>
+                                <h5>Total Wishlist Amount:</h5>
+                                <p style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</p>
+                            </div>
+                        ) : (
+                            <div></div>
+                        )}
+                        {/* <Row> */}
+                            {this.state.wishlist.length ? (
+                                <CardDeck size="md-8">
+                                    {this.state.wishlist.map(sneakers => (
+                                        <Shoe 
+                                            key={sneakers.sneakerId}
+                                            shoe={sneakers.shoeName}
+                                            colorway={sneakers.colorway}
+                                            brand={sneakers.brand}
+                                            price={sneakers.retailPrice}
+                                            gender={sneakers.gender}
+                                            year={sneakers.year}
+                                            image={sneakers.image}
+                                            Button={() => (
+                                                <FormBtn className="btn btn-danger"
+                                                    onClick={() => this.removeSneaker(sneakers.sneakerId)}
+                                                    id="delete-sneaker">Remove From Wishlist</FormBtn>
+                                            )}
+                                        />
+                                    ))}
+                                </CardDeck>
+                            ) : (
+                                <h1>You Don't Have Any Sneakers In Your Wishlist</h1>
+                            )}
+                        {/* </Row> */}
+                    </Container>
+            </div>
         )
     }
 }

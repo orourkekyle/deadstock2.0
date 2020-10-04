@@ -5,6 +5,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Collapse,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -13,48 +14,23 @@ import {
 } from 'reactstrap';
 
 const Navy = (props) => {
-  // const [isOpen, setIsOpen] = useState(false);
 
-  // const toggle = () => setIsOpen(!isOpen);
+  let logoutPath = "http://localhost:3001/oauth/logout"
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Navigation</NavbarBrand>
+        <NavbarBrand href="/browsing">DeadStock</NavbarBrand>
 
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/login">Login</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/signup">Sign Up</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/browsing">Browse Sneakers</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/profile">Profile</NavLink>
-            </NavItem>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Option 1
-                </DropdownItem>
-                <DropdownItem>
-                  Option 2
-                </DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>
-                  Reset
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+              <NavItem>
+                <NavLink href="/browsing">Browse</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/profile">Profile</NavLink>
+              </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
-
+          <NavLink href={logoutPath}>Logout</NavLink>
       </Navbar>
     </div>
   );

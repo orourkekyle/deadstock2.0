@@ -3,12 +3,9 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input, FormBtn } from "../components/Form";
-// import { List } from "../components/List";
 import Shoe from "../components/Shoe";
-// import { Demo } from "../components/Nav";
-// import { Nav } from 'rsuite';
 import CardDeck from "react-bootstrap/CardDeck";
-// import Card from "react-bootstrap/Card";
+import Navy from "../components/Nav";
 
 
 class Browsing extends Component {
@@ -106,7 +103,7 @@ class Browsing extends Component {
             // place to hold results (i.e. a list or grid or both)
 
             <div>
-
+                <Navy />
                 <Container>
                     {/* <Nav /> */}
                     <Row>
