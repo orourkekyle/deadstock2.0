@@ -13,20 +13,21 @@ class Login extends Component {
     // log(hostname);
     
     // loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
-    setRedirect = () => {
-        let loginPath = "http://localhost:3001/oauth/google";
-        console.log("inside Login.js", document.location.hostname)
-        if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
-            let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
-            console.log("inside if: ", loginPath)
-            return loginPath
-        } else {
-            console.log("inside else: ", loginPath)
-            return loginPath
-        }
-    }
+    // setRedirect = () => {
+    //     let loginPath = "http://localhost:3001/oauth/google";
+    //     console.log("inside Login.js", document.location.hostname)
+    //     if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
+    //         let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
+    //         console.log("inside if: ", loginPath)
+    //         return loginPath
+    //     } else {
+    //         console.log("inside else: ", loginPath)
+    //         return loginPath
+    //     }
+    // }
 
     // setRedirect()
+    redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
 
     render() {
         return (
@@ -54,7 +55,7 @@ class Login extends Component {
                             >
                             <strong>Login</strong>
                             </FormBtn>
-                            <a className="nav-link" as='a' href={this.setRedirect()}>
+                            <a className="nav-link" as='a' href={this.redirectPath}>
                                 <FormBtn type="button" className="btn btn-danger" >
                                     <strong>Google+</strong>
                                 </FormBtn>
