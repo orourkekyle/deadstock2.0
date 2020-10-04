@@ -1,11 +1,11 @@
 // put together profile components
 import React, { Component } from "react";
-import { Container } from "../components/Grid";
 import API from "../utils/API";
 import CardDeck from "react-bootstrap/CardDeck";
 import Shoe from "../components/Shoe";
 import { FormBtn } from "../components/Form";
 import Navy from "../components/Nav";
+import { Container } from "reactstrap";
 
 class Profile extends Component{
     state = {
