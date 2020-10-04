@@ -155,7 +155,7 @@ class Browsing extends Component {
                                     name="releaseYear"
                                     placeholder="Release Year"
                                 />
-                                <div style={{}}>
+                                <div>
                                     <FormBtn className="btn btn-success"
                                         onClick={this.handleSearch}
                                     >
