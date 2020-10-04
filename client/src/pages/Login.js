@@ -8,13 +8,13 @@ import { Input, FormBtn } from "../components/Form";
 
 class Login extends Component {
 
-    loginPath = "http://localhost:3001/oauth/google";
+    loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
 
     render() {
         return (
             <Container fluid >
                 <Row fluid >
-                    <Col size="md-12" >
+                    <Col sm="3" className="text-center mx-auto" >
                         <h1 style={{
                             textAlign: "center",
                             paddingTop: "12%"

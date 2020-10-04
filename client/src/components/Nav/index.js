@@ -15,7 +15,7 @@ import {
 
 const Navy = (props) => {
 
-  let logoutPath = "http://localhost:3001/oauth/logout"
+  let logoutPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/logout" : "http://localhost:3001/oauth/logout"
 
   return (
     <div>
