@@ -7,8 +7,8 @@ console.log("HIT: oauth-routes");
 router
 .route("/logout")
 .get((req, res) => {
-    // let redirectPath = (process.env.NODE_ENV === "production") ? 
-    let redirectPath = "http://localhost:3000"
+    let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/" : "http:localhost:3000"
+    // let redirectPath = "http://localhost:3000"
     req.logout();
     res.redirect(redirectPath);
 });
@@ -27,7 +27,7 @@ router
 router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
- let redirectPath = "http://localhost:3000"
+let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/" : "http:localhost:3000"
  redirectPath = `${redirectPath}/profile`;
  res.redirect(redirectPath)
 })
