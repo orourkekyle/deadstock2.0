@@ -15,7 +15,7 @@ class Login extends Component {
     // loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
     setRedirect = () => {
         let loginPath = "http://localhost:3001/oauth/google";
-        console.log(document.location.hostname)
+        console.log("inside Login.js", document.location.hostname)
         if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
             let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
             console.log("inside if: ", loginPath)

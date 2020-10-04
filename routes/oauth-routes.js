@@ -3,27 +3,14 @@ const passport = require("passport");
 
 console.log("HIT: oauth-routes");
 
-function setRedirect() {
-    let loginPath = "http://localhost:3001/oauth/google";
-    console.log(document.location.hostname)
-    if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
-        let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
-        console.log("inside if: ", loginPath)
-        return loginPath
-    } else {
-        console.log("inside else: ", loginPath)
-        return loginPath
-    }
-}
-
 // auth logout
 router
 .route("/logout")
 .get((req, res) => {
     // let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/" : "http://localhost:3000"
-    // let redirectPath = "http://localhost:3000"
+    let redirectPath = "https://fathomless-shore-38628.herokuapp.com/"
     req.logout();
-    res.redirect(setRedirect);
+    res.redirect(redirectPath);
 });
 
 // auth with google
@@ -40,11 +27,21 @@ router
 router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
-//  let redirectPath = "http://localhost:3000"
-// let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com" : "http://localhost:3000"
-redirectPath = `${setRedirect}/profile`;
-// redirectPath = `${redirectPath}/search?userId=${req.user.googleId}`
- res.redirect(redirectPath)
+    console.log("req inside redirect route", req.hostname);
+    // setRedirect = () => {
+    //     if (req.hostname === "https://fathomless-shore-38629.herokuapp.com") {
+    //         let redirectPath = "https://fathomless-shore-38629.herokuapp.com";
+    //         return redirectPath;
+    //     } else {
+    //         let redirectPath = "http://localhost:3000";
+    //         return redirectPath;
+    //     }
+    // }
+    let redirectPath = "https://fathomless-shore-38628.herokuapp.com"   
+    // let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com" : "http://localhost:3000"
+    redirectPath = `${redirectPath}/profile`;
+    // redirectPath = `${redirectPath}/search?userId=${req.user.googleId}`
+    res.redirect(redirectPath)
 })
 
 module.exports = router;

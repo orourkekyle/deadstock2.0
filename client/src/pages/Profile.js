@@ -5,7 +5,7 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Shoe from "../components/Shoe";
 import { FormBtn } from "../components/Form";
 import Navy from "../components/Nav";
-import { Container } from "reactstrap";
+import { Container, Col, Card } from "reactstrap";
 
 class Profile extends Component{
     state = {
@@ -63,10 +63,12 @@ class Profile extends Component{
                 <Navy />
                     <Container>
                         {this.state.totalprice.length ? (
-                            <div>
-                                <h5>Total Wishlist Amount:</h5>
-                                <p style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</p>
-                            </div>
+                            <Col sm="3" className="mb-5 text-center mx-auto">
+                                <Card style={{borderColor: 'green', borderStyle: 'ridge', borderWidth: '4px'}}>
+                                    <h5 style={{color: "black"}}>Total Wishlist Amount:</h5>
+                                    <strong style={{color: 'green'}}>${this.state.totalprice.reduce((result, number) => result+number)}</strong>
+                                </Card>
+                            </Col>
                         ) : (
                             <div></div>
                         )}
@@ -84,7 +86,7 @@ class Profile extends Component{
                                             year={sneakers.year}
                                             image={sneakers.image}
                                             Button={() => (
-                                                <FormBtn className="btn btn-danger"
+                                                <FormBtn className="btn btn-danger text-center mt-auto"
                                                     onClick={() => this.removeSneaker(sneakers.sneakerId)}
                                                     id="delete-sneaker">Remove From Wishlist</FormBtn>
                                             )}

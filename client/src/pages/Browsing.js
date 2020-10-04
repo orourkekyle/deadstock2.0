@@ -194,7 +194,7 @@ class Browsing extends Component {
                                         year={sneaker.year}
                                         image={sneaker.media.thumbUrl}
                                         Button={() => (
-                                            <FormBtn className="btn btn-success"
+                                            <FormBtn className="btn btn-success tex-center mt-auto"
                                                 onClick={() => this.handleSaves(sneaker.id)}
                                                 id="save-btn" >Save</FormBtn>
                                         )}
