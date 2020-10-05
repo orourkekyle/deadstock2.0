@@ -6,6 +6,7 @@ import Shoe from "../components/Shoe";
 import { FormBtn } from "../components/Form";
 import Navy from "../components/Nav";
 import { Container, Col, Card } from "reactstrap";
+import "./profile.css";
 
 class Profile extends Component{
     state = {
@@ -61,7 +62,7 @@ class Profile extends Component{
         return (
             <div>
                 <Navy />
-                    <Container>
+                    <Container style={{paddingTop: 100}}>
                         {this.state.totalprice.length ? (
                             <Col sm="3" className="mb-5 text-center mx-auto">
                                 <Card style={{borderColor: 'green', borderStyle: 'ridge', borderWidth: '4px'}}>
@@ -94,7 +95,7 @@ class Profile extends Component{
                                     ))}
                                 </CardDeck>
                             ) : (
-                                <h1>You Don't Have Any Sneakers In Your Wishlist</h1>
+                                <h1 className="placeholder text-center">You Don't Have Any Sneakers In Your Wishlist</h1>
                             )}
                         {/* </Row> */}
                     </Container>

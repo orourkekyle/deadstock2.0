@@ -7,6 +7,7 @@ import Shoe from "../components/Shoe";
 import CardDeck from "react-bootstrap/CardDeck";
 import Navy from "../components/Nav";
 import { FormGroup, Row, Col, Container, Form } from "reactstrap";
+import "./Browsing.css"
 
 
 class Browsing extends Component {
@@ -126,7 +127,7 @@ class Browsing extends Component {
         return (
             <div>
                 <Navy />
-                <Container>
+                <Container style={{paddingTop: 100}}>
                     {/* <Nav /> */}
                     <Row>
                         <Col sm="6" className="text-center mx-auto">
@@ -156,7 +157,7 @@ class Browsing extends Component {
                                     placeholder="Release Year"
                                 />
                                 <div>
-                                    <FormBtn className="btn btn-success"
+                                    <FormBtn className="btn btn-white"
                                         onClick={this.handleSearch}
                                     >
                                        <strong>Search</strong>
@@ -169,12 +170,12 @@ class Browsing extends Component {
 
                 <Row className="text-center mx-auto">
                     <Col>
-                        <FormBtn className="btn btn-primary" onClick={this.sortPriceDesc}> Sort Price from Low to High </FormBtn>
-                        <FormBtn className="btn btn-primary" onClick={this.sortPriceAsc}> Sort Price from High to Low </FormBtn>
+                        <FormBtn className="btn btn-pink" onClick={this.sortPriceDesc}> Sort Price from Low to High </FormBtn>
+                        <FormBtn className="btn btn-blue" onClick={this.sortPriceAsc}> Sort Price from High to Low </FormBtn>
                     </Col>
                     <Col>
-                    <FormBtn className="btn btn-primary" onClick={this.sortYearDesc}>Sort from Newest to Oldest</FormBtn>
-                        <FormBtn className="btn btn-primary" onClick={this.sortYearAsc}> Sort from Oldest to Newest </FormBtn>
+                    <FormBtn className="btn btn-blue" onClick={this.sortYearDesc}>Sort from Newest to Oldest</FormBtn>
+                        <FormBtn className="btn btn-pink" onClick={this.sortYearAsc}> Sort from Oldest to Newest </FormBtn>
                     </Col>
                 </Row>
 
@@ -194,7 +195,7 @@ class Browsing extends Component {
                                         year={sneaker.year}
                                         image={sneaker.media.thumbUrl}
                                         Button={() => (
-                                            <FormBtn className="btn btn-success tex-center mt-auto"
+                                            <FormBtn className="btn btn-pink tex-center mt-auto"
                                                 onClick={() => this.handleSaves(sneaker.id)}
                                                 id="save-btn" >Save</FormBtn>
                                         )}
@@ -202,7 +203,7 @@ class Browsing extends Component {
                                 ))}
                             </CardDeck>
                         ) : (
-                                <h2 className="text-center" style={{color: "white"}}>Search for Sneakers!</h2>
+                                <h2 className="search-for-sneakers text-center" style={{color: "white"}}>Search for Sneakers!</h2>
                             )}
                     {/* </Row> */}
                 </div>

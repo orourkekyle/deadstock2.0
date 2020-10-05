@@ -1,0 +1,87 @@
+.form-group{
+    position: relative;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    background: black;
+    margin: 5px;
+    /* border-radius: 25px; */
+}
+.form-group:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: black;
+    z-index: -1;
+}
+.form-group:after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: black;
+    z-index: -2;
+    filter: blur(40px);
+}
+.form-group:before, .form-group:after {
+    background: linear-gradient(235deg, #ff00ea, #060c21, #002fff);
+}
+.form-control, textarea{
+    padding: 20px;
+    color: white;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    border-radius: 0%;
+}
+.form-control:focus {
+    background-color: black;
+    color: whitesmoke;
+}
+.btn{
+    color: white;
+    background-color: black;
+}
+.btn-pink:hover{
+    color:black;
+    background: white;
+    box-shadow: 0 0 10px #ff00ea, 0 0 40px  #ff00ea, 0 0 80px  #ff00ea;
+}
+.btn-blue:hover{
+    color: black;
+    background: white;
+    box-shadow: 0 0 10px #002fff, 0 0 40px #002fff, 0 0 80px #2196f3;
+}
+.btn-white{
+    color: black;
+    background: white;
+}
+.btn-white:hover{
+    color: blue;
+    background: pink;
+    box-shadow: 0 0 10px blue, 0 0 40px blue, 0 0 80px blue;
+}
+.btn-google{
+    color: white;
+    background: red;
+}
+.btn-google:hover{
+    color: black;
+    background: white;
+    box-shadow: 0 0 10px blue, 0 0 40px blue, 0 0 80px blue;    
+}
+.btn-save{
+    color: white;
+    background: black;
+}
+.btn-save:hover{
+    color: black;
+    background: white;
+    box-shadow: 0 0 10px black, 0 0 40px black, 0 0 80px black;    
+}

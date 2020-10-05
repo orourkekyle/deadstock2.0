@@ -29,15 +29,6 @@ router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
     console.log("req inside redirect route", req.hostname);
-    // setRedirect = () => {
-    //     if (req.hostname === "https://fathomless-shore-38629.herokuapp.com") {
-    //         let redirectPath = "https://fathomless-shore-38629.herokuapp.com";
-    //         return redirectPath;
-    //     } else {
-    //         let redirectPath = "http://localhost:3000";
-    //         return redirectPath;
-    //     }
-    // }
     // let redirectPath = "https://fathomless-shore-38628.herokuapp.com" 
     // let redirectPath = "http://localhost:3000"  
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com' : 'http://localhost:3000'

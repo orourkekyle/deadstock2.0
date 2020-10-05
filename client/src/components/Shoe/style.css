@@ -1,7 +1,35 @@
-.border {
+/* .border {
     border-width: 5px;
     border-style: groove;
     border-color: green;
+}
+.card-text {
+    color: black;
+} */
+
+.card:before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: black;
+    z-index: -1;
+}
+.card:after{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: black;
+    z-index: -2;
+    filter: blur(40px)
+}
+.card:after, .card:before{
+    background: linear-gradient(235deg, #ff00ea, #060c21, #002fff);
 }
 .card-text {
     color: black;

@@ -1,8 +1,9 @@
 body {
-    background-image: url(../images/IMG_4107.JPG);
+    background-image: url(../images/deadstock.png);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    z-index: -3;
 
     /* object-fit: cover; */
 

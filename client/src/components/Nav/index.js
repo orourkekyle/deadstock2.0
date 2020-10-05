@@ -1,62 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Navbar,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  Collapse,
-  UncontrolledDropdown,
   DropdownToggle,
-  DropdownMenu,
+  Dropdown,
   DropdownItem,
-  NavbarText
+  DropdownMenu,
 } from 'reactstrap';
-
-// function setRedirect() {
-//   let loginPath = "http://localhost:3001/oauth/logout";
-//   console.log(document.location.hostname)
-//   if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
-//       let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
-//       console.log("inside if: ", loginPath)
-//       return loginPath
-//   } else {
-//       console.log("inside else: ", loginPath)
-//       return loginPath
-//   }
-// }
+import "./style.css"
 
 const Navy = (props) => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(!dropdownOpen);
 
   let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/logout' : 'http://localhost:3001/oauth/logout'
-  // setRedirect = () => {
-  //   let loginPath = "http://localhost:3001/oauth/logout";
-  //   console.log(document.location.hostname)
-  //   if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
-  //       let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
-  //       console.log("inside if: ", loginPath)
-  //       return loginPath
-  //   } else {
-  //       console.log("inside else: ", loginPath)
-  //       return loginPath
-  //   }
-  // }
   // let redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
   // let redirectPath = "http://localhost:3001/oauth/logout";
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/browsing">DeadStock</NavbarBrand>
+      <Navbar fixed="top" color="black" light expand="md">
+        {/* <NavbarBrand className="deadstock" href="/browsing"><strong>DeadStock</strong></NavbarBrand> */}
+        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+          <DropdownToggle className="deadstock" caret ><strong>DeadStock</strong></DropdownToggle>
+            <DropdownMenu style={{background: "grey"}}>
           <Nav className="mr-auto" navbar>
-              <NavItem>
-                <NavLink href="/browsing">Browse</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/profile">Profile</NavLink>
-              </NavItem>
+              <DropdownItem>
+                <NavLink style={{color: "black"}} href="/browsing">Browse</NavLink>
+              </DropdownItem>
+              <DropdownItem>
+                <NavLink style={{color: "black"}} href="/profile">Profile</NavLink>
+              </DropdownItem>
+              <DropdownItem>
+                <NavLink style={{color: "black"}} href={redirectPath}>Logout</NavLink>
+              </DropdownItem>
           </Nav>
-          <NavLink href={redirectPath}>Logout</NavLink>
+          {/* <NavLink style={{color: "black"}} href={redirectPath}>Logout</NavLink> */}
+          </DropdownMenu>
+          </Dropdown>
+
       </Navbar>
     </div>
   );

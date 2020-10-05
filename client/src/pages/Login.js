@@ -3,30 +3,12 @@ import React, { Component } from "react";
 import "./Login.css";
 // import { Container, Row, Col } from "../components/Grid";
 import { Row, Col, Container } from "reactstrap";
-import { Input, FormBtn } from "../components/Form";
+import { FormBtn } from "../components/Form";
 
 
 class Login extends Component {
-
-    hostname = document.location.hostname;
-
-    // log(hostname);
     
     loginPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/google' : 'http://localhost:3001/oauth/google';
-    // setRedirect = () => {
-    //     let loginPath = "http://localhost:3001/oauth/google";
-    //     console.log("inside Login.js", document.location.hostname)
-    //     if( document.location.hostname  === "https://fathomless-shore-38628.herokuapp.com" ) {
-    //         let loginPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
-    //         console.log("inside if: ", loginPath)
-    //         return loginPath
-    //     } else {
-    //         console.log("inside else: ", loginPath)
-    //         return loginPath
-    //     }
-    // }
-
-    // setRedirect()
     // redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
     // redirectPath = "http://localhost:3001/oauth/google"
 
@@ -38,7 +20,7 @@ class Login extends Component {
                         <h1 style={{
                             textAlign: "center",
                             paddingTop: "12%"
-                        }}>DEADSTOCK</h1>
+                        }}>Login:</h1>
                         {/* <form style={{ textAlign: "center" }}>
                             <Input
                                 style={{ textAlign: "left" }}
@@ -57,7 +39,7 @@ class Login extends Component {
                             <strong>Login</strong>
                             </FormBtn> */}
                             <a className="nav-link" as='a' href={this.loginPath}>
-                                <FormBtn type="button" className="btn btn-danger" >
+                                <FormBtn type="button" className="btn btn-google" >
                                     <strong>Google+</strong>
                                 </FormBtn>
                             </a>
