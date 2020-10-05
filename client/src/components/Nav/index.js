@@ -28,7 +28,7 @@ import {
 
 const Navy = (props) => {
 
-  // let logoutPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/logout" : "http://localhost:3001/oauth/logout"
+  let logoutPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/logout' : 'http://localhost:3001/oauth/logout'
   // setRedirect = () => {
   //   let loginPath = "http://localhost:3001/oauth/logout";
   //   console.log(document.location.hostname)
@@ -41,7 +41,7 @@ const Navy = (props) => {
   //       return loginPath
   //   }
   // }
-  let redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
+  // let redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
   // let redirectPath = "http://localhost:3001/oauth/logout";
 
   return (

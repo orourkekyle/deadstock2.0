@@ -12,7 +12,7 @@ class Login extends Component {
 
     // log(hostname);
     
-    // loginPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/oauth/google" : "http://localhost:3001/oauth/google";
+    loginPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/google' : 'http://localhost:3001/oauth/google';
     // setRedirect = () => {
     //     let loginPath = "http://localhost:3001/oauth/google";
     //     console.log("inside Login.js", document.location.hostname)
@@ -27,7 +27,7 @@ class Login extends Component {
     // }
 
     // setRedirect()
-    redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
+    // redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
     // redirectPath = "http://localhost:3001/oauth/google"
 
     render() {

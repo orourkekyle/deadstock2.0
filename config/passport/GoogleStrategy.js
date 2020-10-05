@@ -14,7 +14,7 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-let redirectPath = "http://localhost:3001/oauth/google/redirect";
+let redirectPath = process.env.NODE_ENV === 'production' ? ('https://fathomless-shore-38628.herokuapp.com') : ('http://localhost:3001/oauth/google/redirect');
 
 passport.use(new GoogleStrategy({
     // options for the google strat
