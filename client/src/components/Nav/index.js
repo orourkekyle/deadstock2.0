@@ -42,6 +42,7 @@ const Navy = (props) => {
   //   }
   // }
   let redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
+  // let redirectPath = "http://localhost:3001/oauth/logout";
 
   return (
     <div>

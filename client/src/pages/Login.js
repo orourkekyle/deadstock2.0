@@ -28,6 +28,7 @@ class Login extends Component {
 
     // setRedirect()
     redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
+    // redirectPath = "http://localhost:3001/oauth/google"
 
     render() {
         return (
@@ -38,7 +39,7 @@ class Login extends Component {
                             textAlign: "center",
                             paddingTop: "12%"
                         }}>DEADSTOCK</h1>
-                        <form style={{ textAlign: "center" }}>
+                        {/* <form style={{ textAlign: "center" }}>
                             <Input
                                 style={{ textAlign: "left" }}
                                 name="username"
@@ -54,13 +55,13 @@ class Login extends Component {
                                 style={{ marginLeft: "auto" }}
                             >
                             <strong>Login</strong>
-                            </FormBtn>
+                            </FormBtn> */}
                             <a className="nav-link" as='a' href={this.redirectPath}>
                                 <FormBtn type="button" className="btn btn-danger" >
                                     <strong>Google+</strong>
                                 </FormBtn>
                             </a>
-                        </form>
+                        {/* </form> */}
                     </Col>
                 </Row>
             </Container>
