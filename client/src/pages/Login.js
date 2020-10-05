@@ -56,7 +56,7 @@ class Login extends Component {
                             >
                             <strong>Login</strong>
                             </FormBtn> */}
-                            <a className="nav-link" as='a' href={this.redirectPath}>
+                            <a className="nav-link" as='a' href={this.loginPath}>
                                 <FormBtn type="button" className="btn btn-danger" >
                                     <strong>Google+</strong>
                                 </FormBtn>
