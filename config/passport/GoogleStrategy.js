@@ -19,6 +19,7 @@ let redirectPath = process.env.NODE_ENV === 'production' ? ('https://fathomless-
 passport.use(new GoogleStrategy({
     // options for the google strat
     callbackURL: redirectPath,
+    proxy: true,
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret
 }, (accessToken, refreshToken, profile, done) => {
