@@ -18,10 +18,10 @@ let redirectPath = process.env.NODE_ENV === 'production' ? ('https://fathomless-
 
 passport.use(new GoogleStrategy({
     // options for the google strat
-    callbackURL: redirectPath,
-    proxy: true,
     clientID: keys.google.clientID,
-    clientSecret: keys.google.clientSecret
+    clientSecret: keys.google.clientSecret,
+    callbackURL: redirectPath,
+    proxy: true
 }, (accessToken, refreshToken, profile, done) => {
     // passport cb function
     //first check if user already exists in our db
