@@ -21,7 +21,7 @@ passport.use(new GoogleStrategy({
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
     callbackURL: redirectPath,
-    proxy: "true"
+    proxy: true
 }, (accessToken, refreshToken, profile, done) => {
     // passport cb function
     //first check if user already exists in our db
