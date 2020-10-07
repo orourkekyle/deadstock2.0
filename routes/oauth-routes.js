@@ -7,7 +7,7 @@ console.log("HIT: oauth-routes");
 router
 .route("/logout")
 .get((req, res) => {
-    let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com/" : "http://localhost:3000"
+    let redirectPath = (process.env.NODE_ENV === "production") ? "https://fathomless-shore-38628.herokuapp.com" : "http://localhost:3000"
     // let redirectPath = "https://fathomless-shore-38628.herokuapp.com/"
     // let redirectPath = "http://localhost:3000"
     req.logout();
