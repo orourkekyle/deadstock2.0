@@ -17,7 +17,7 @@ const Navy = (props) => {
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
 
-  let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/logout' : 'http://localhost:3001/oauth/logout'
+  let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com/oauth/logout' : 'http://localhost:3001/oauth/logout'
   // let redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/logout";
   // let redirectPath = "http://localhost:3001/oauth/logout";
 

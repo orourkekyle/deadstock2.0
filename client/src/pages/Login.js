@@ -8,9 +8,7 @@ import { FormBtn } from "../components/Form";
 
 class Login extends Component {
     
-    loginPath = (process.env.NODE_ENV === 'production') ? 'https://fathomless-shore-38628.herokuapp.com/oauth/google' : 'http://localhost:3001/oauth/google';
-    // redirectPath = "https://fathomless-shore-38628.herokuapp.com/oauth/google";
-    // redirectPath = "http://localhost:3001/oauth/google"
+    loginPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com/oauth/google' : 'http://localhost:3001/oauth/google';
 
     render() {
         return (
