@@ -26,9 +26,9 @@ router
 router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
-    console.log("req inside redirect route", req.hostname);
+    console.log("req inside redirect route:", req.hostname);
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
-    redirectPath = `${redirectPath}/profile`;
+    redirectPath = `${redirectPath}/redirectprofile`;
     // redirectPath = `${redirectPath}/search?userId=${req.user.googleId}`
     res.redirect(redirectPath)
 })
