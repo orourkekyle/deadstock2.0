@@ -50,7 +50,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/deadstockDB", {
 // use routes
 app.use("/oauth", oauthRoutes);
 app.use("/local", localRoutes);
-app.use("/redirectprofile", profileRoutes);
+app.use("/profile", profileRoutes);
 app.use(routes);
 
 // Start the API server
