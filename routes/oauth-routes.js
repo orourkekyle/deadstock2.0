@@ -23,17 +23,17 @@ router
 } );
 
 
-const authCheck = (req, res, next) => {
-    console.log("req.user: ", req);
-    if(!req.user){
-        // if user is NOT logged in
-        res.redirect("/oauth/login");
-        // res.redirect("/singup");
-    }else {
-        // if user IS logged in
-        next();
-    }
-};
+// const authCheck = (req, res, next) => {
+//     console.log("req.user: ", req);
+//     if(!req.user){
+//         // if user is NOT logged in
+//         res.redirect("/oauth/login");
+//         // res.redirect("/singup");
+//     }else {
+//         // if user IS logged in
+//         next();
+//     }
+// };
 
 
 // cb route for google to redirect to
@@ -44,7 +44,8 @@ router
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
     redirectPath = `${redirectPath}/profile`;
     // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
-    res.redirect(redirectPath, authCheck, { user: req.user })
+    res.redirect(redirectPath)
+    
 })
 
 module.exports = router;
