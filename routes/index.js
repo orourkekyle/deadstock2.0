@@ -6,8 +6,15 @@ const apiRoutes = require('./api');
 router.use("/api", apiRoutes);
 
 // default route
-router.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/public/index.html"));
-  });
+// router.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, "../client/public/index.html"));
+//   });
+
+// default deployed route
+if (process.env.NODE_ENV === 'production') {
+  router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'))
+  })
+}
 
 module.exports = router;

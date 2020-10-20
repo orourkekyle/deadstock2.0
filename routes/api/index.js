@@ -10,8 +10,8 @@ router.use("/sneakers", sneakerApiRoutes);
 router.use("/wishlist", wishlistRoutes);
 
 // for *, render html page
-router.use(function(req, res) {
-    res.sendFile(path.join(__dirname, "../../client/public/index.html"))
-});
+// router.use(function(req, res) {
+//     res.sendFile(path.join(__dirname, "../../client/public/index.html"))
+// });
 
 module.exports = router;
