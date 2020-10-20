@@ -4,8 +4,19 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Browsing from './pages/Browsing';
 import SignUp from "../src/pages/SignUp";
+import API from "./utils/API.js";
 
 function App() {
+  // state = {
+  //   currentUser: []
+  // };
+
+  // checkForUser = () => {
+  //   API.getCurrentGoogleUser()
+  //     .then(res => {
+  //       console.log("res.data inside App.js: ", res.data);
+  //     })
+  // }
   return (
     <Router>
       <div>
@@ -17,6 +28,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
+  ); 
 }
 export default App;

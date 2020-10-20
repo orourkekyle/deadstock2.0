@@ -3,12 +3,15 @@ import axios from "axios";
 export default {
 
     // local auth routes
-    createLocalUser: function(username, password) {
-        console.log("before axios.post on FE");
-        return axios.post("/local/createuser", { username, password });
-    },
-    getCurrentLocalUser: function() {
-        return axios.get("/local/getuser");
+    // createLocalUser: function(username, password) {
+    //     console.log("before axios.post on FE");
+    //     return axios.post("/local/createuser", { username, password });
+    // },
+    // getCurrentLocalUser: function() {
+    //     return axios.get("/local/getuser");
+    // },
+    getCurrentGoogleUser: function(req, res) {
+        return axios.get("/profile");
     },
 
     // sneaker api get route

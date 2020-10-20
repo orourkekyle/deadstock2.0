@@ -36,6 +36,7 @@ module.exports = {
     find: function (req, res) {
         GoogleUser.find({})
             .populate("sneakers")
+            // should be .populate("wishlist") ??
             .then(dbGoogleUser => {
                 res.json(dbGoogleUser);
             })

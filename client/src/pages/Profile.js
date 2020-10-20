@@ -63,6 +63,7 @@ class Profile extends Component{
             <div>
                 <Navy />
                     <Container style={{paddingTop: 100}}>
+                        <h1>{this.state.currentUser}'s Virtual Closet</h1>
                         {this.state.totalprice.length ? (
                             <Col sm="3" className="mb-5 text-center mx-auto">
                                 <Card style={{borderColor: 'green', borderStyle: 'ridge', borderWidth: '4px'}}>
