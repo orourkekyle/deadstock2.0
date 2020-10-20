@@ -16,7 +16,7 @@ const authCheck = (req, res, next) => {
 
 router.get('/', authCheck, (req, res) => {
     console.log("inside profile route req.user: ", req.user);
-    res.redirect("/profile", { user: req.user });
+    res.redirect("/profile");
 });
 
 module.exports = router;
