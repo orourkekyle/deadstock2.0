@@ -4,7 +4,8 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Browsing from './pages/Browsing';
 import SignUp from "../src/pages/SignUp";
-import API from "./utils/API.js";
+// import API from "./utils/API.js";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   // state = {
@@ -23,8 +24,8 @@ function App() {
         <Switch>
           <Route exact path={"/"} component = { Login } />
           <Route exact path={"/signup"} component = { SignUp } />
-          <Route exact path={"/profile"} component = { Profile } />
-          <Route exact path={"/browsing"} component = { Browsing } />
+          <ProtectedRoute exact path={"/profile"} component = { Profile } />
+          <ProtectedRoute exact path={"/browsing"} component = { Browsing } />
         </Switch>
       </div>
     </Router>
