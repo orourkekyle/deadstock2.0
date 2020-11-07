@@ -44,7 +44,7 @@ router
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
     redirectPath = `${redirectPath}/profile`;
     // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
-    res.redirect(redirectPath)
+    res.redirect(redirectPath);
     
 })
 
