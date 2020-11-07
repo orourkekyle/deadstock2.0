@@ -18,8 +18,9 @@ router.get('/', authCheck, (req, res) => {
     console.log("inside profile route req.user: ", req.user);
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
     // res.redirect(`${redirectPath}/*`, { user: req.user });
-    res.redirect(`${redirectPath}/profile`);
-    // res.render("profile", { user: req.user });
+    // res.redirect(`${redirectPath}/profile`);
+    res.render("profile", { user: req.user });
+    // res.render("profile");
 });
 
 module.exports = router;
