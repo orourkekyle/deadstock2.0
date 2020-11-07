@@ -27,7 +27,10 @@ export default {
         return axios.post("/api/wishlist", sneakerData);
     },
     saveToPopular: function(sneakerData) {
-        return axios.post("/api/wishlist/createpopular", sneakerData)
+        return axios.post("/api/wishlist/popular", sneakerData)
+    },
+    getPopular: function() {
+        return axios.get("/api/wishlist/popular")
     },
     saveUserSave: function(userData) {
         return axios.post("/api/wishlist/updatepopular", userData)

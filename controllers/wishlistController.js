@@ -44,7 +44,12 @@ module.exports = {
     },
 
     findPopular: function (req, res) {
-
+        PopularWishlist
+        .find({})
+        .then(dbPopularWishlist => {
+            res.json(dbPopularWishlist);
+        })
+        .catch(err => console.log("this is findPopular ERROR: ", err));
     },
 
     remove: function (req, res) {

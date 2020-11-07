@@ -11,7 +11,8 @@ router
 // .post(wishlistController.updateIdsInPopular)
 
 router
-.route("/createpopular")
+.route("/popular")
+.get(wishlistController.findPopular)
 .post(wishlistController.createInPopular)
 
 router

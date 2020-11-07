@@ -37,7 +37,6 @@ module.exports = {
                     result.media.thumbUrl &&
                     result.media.thumbUrl !== annoyingPlaceholderUrl
             )
-
             })
         .then((result) => {
                 // console.log("these are the results we want:", result);

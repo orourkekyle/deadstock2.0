@@ -8,12 +8,14 @@ import CardDeck from "react-bootstrap/CardDeck";
 import Navy from "../components/Nav";
 import { FormGroup, Row, Col, Container, Form } from "reactstrap";
 import "./Browsing.css"
+import Popular from "../components/Popular";
 
 
 class Browsing extends Component {
     // start state
     state = {
         sneakers: [],
+        popularSneakers: [],
         shoeName: "",
         brand: "",
         gender: "",
@@ -50,6 +52,11 @@ class Browsing extends Component {
         }
     }
 
+    // get popular on page load
+    // componentDidMount = () => {
+    //     return this.getPopular();
+    // }
+
     // register what gets put into input fields
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -57,6 +64,22 @@ class Browsing extends Component {
             [name]: value
         });
     };
+
+    // get popular sneakers from db
+    // getPopular = () => {
+    //     API.getPopular()
+    //         .then(res => {
+    //             console.log("res.data inside popularwishlistdb: ", res.data)
+    //             return this.setState({
+    //                 popularSneakers: res.data
+    //             })
+    //         })
+    //         .catch(() =>
+    //             this.setState({
+    //                 popularSneakers: [],
+    //                 message: "No Sneakers Found in DB"
+    //             }));
+    // };
 
     // get sneakers from external api based on search
     getSneakers = () => {
@@ -180,8 +203,6 @@ class Browsing extends Component {
                 </Row>
 
                 <div className="shoe-container">
-                    {/* <Row> */}
-                        {/* <h1 style={{ margin: "left" }}>Search Results</h1> */}
                         {this.state.sneakers.length ? (
                             <CardDeck size="sm-4">
                                 {this.state.sneakers.map(sneaker => (
@@ -203,9 +224,35 @@ class Browsing extends Component {
                                 ))}
                             </CardDeck>
                         ) : (
-                                <h2 className="search-for-sneakers text-center" style={{color: "white"}}>Search for Sneakers!</h2>
+                    // </div>
+                                // <h2 className="search-for-sneakers text-center" style={{color: "white"}}>These some user favorites!</h2>
+                                <Popular></Popular>
+                            //    <div>
+                            //        {this.state.popularSneakers.length ? (
+                            //            <CardDeck size="sm-4">
+                            //                {this.state.popularSneakers.map(popular => (
+                            //                    <Shoe
+                            //                     key={popular.id}
+                            //                     shoe={popular.shoe}
+                            //                     colorway={popular.colorway}
+                            //                     brand={popular.brand}
+                            //                     price={popular.retailPrice}
+                            //                     gender={popular.gender}
+                            //                     year={popular.year}
+                            //                     image={popular.media.thumbUrl}
+                            //                     Button={() => (
+                            //                         <FormBtn className="btn btn-pink tex-center mt-auto"
+                            //                             onClick={() => this.handleSaves(popular.id)}
+                            //                             id="save-btn" >Save</FormBtn>
+                            //                     )}
+                            //                 />
+                            //                ))}
+                            //            </CardDeck>
+                            //        ) : (
+                            //                 <h2 className="search-for-sneakers text-center" style={{color: "white"}}>These some user favorites!</h2>
+                            //             )}
+                            //    </div> 
                             )}
-                    {/* </Row> */}
                 </div>
             </div>
         );
