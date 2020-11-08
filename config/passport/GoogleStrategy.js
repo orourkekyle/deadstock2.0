@@ -29,7 +29,7 @@ passport.use(new GoogleStrategy({
     GoogleUser.findOne({googleId: profile.id}).then((currentUser) => {
         if(currentUser){
             // already have the user
-            // console.log("this is currentUser inside GoogleStrat cb: ", currentUser);
+            console.log("this is currentUser inside GoogleStrat cb: ", currentUser);
             done(null, currentUser);
         } else{
             //if not, create user in our db

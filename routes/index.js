@@ -11,16 +11,16 @@ router.use("/api", apiRoutes);
 //   });
 
 // default deployed route
-// if (process.env.NODE_ENV === 'production') {
-//   router.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'client/build/index.html'))
-//   })
-// }
 if (process.env.NODE_ENV === 'production') {
-  router.get('*', function (req, res) {
-    const index = path.join(__dirname, 'build', 'index.html');
-    res.sendFile(index);
+  router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'))
   })
 }
+// if (process.env.NODE_ENV === 'production') {
+//   router.get('*', function (req, res) {
+//     const index = path.join(__dirname, 'build', 'index.html');
+//     res.sendFile(index);
+//   })
+// }
 
 module.exports = router;

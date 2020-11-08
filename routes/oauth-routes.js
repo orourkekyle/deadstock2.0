@@ -1,3 +1,4 @@
+const path = require('path');
 const router = require("express").Router();
 const passport = require("passport");
 
@@ -44,21 +45,23 @@ router
 } );
 
 // cb route for google to redirect to
-// router
-// .route('/google/redirect')
-// .get(passport.authenticate("google"), (req, res) => {
-//     // console.log("req.hostname inside redirect route:", req.hostname);
-//     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
-//     redirectPath = `${redirectPath}/profile`;
-//     // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
-//     res.redirect(redirectPath);
-    
-// })
-let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
 router
-.get('/google/redirect', passport.authenticate('google', {
-    successRedirect: `${redirectPath}/profile`,
-    failureRedirect: '/oauth/login/failed'
-}))
+.route('/google/redirect')
+.get(passport.authenticate("google"), (req, res) => {
+    // console.log("req.hostname inside redirect route:", req.hostname);
+    let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
+    redirectPath = `${redirectPath}`;
+    // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
+    res.redirect(redirectPath);
+    // res.sendFile(path.join(__dirname, 'client/build/index.html'));
+    // res.redirect("http://localhost:3000")
+})
+
+// let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
+// router
+// .get('/google/redirect', passport.authenticate('google', {
+//     successRedirect: '*',
+//     failureRedirect: '/oauth/login/failed'
+// }))
 
 module.exports = router;
