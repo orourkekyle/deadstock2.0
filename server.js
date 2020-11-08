@@ -18,7 +18,12 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // use cors for browser security
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true
+  }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

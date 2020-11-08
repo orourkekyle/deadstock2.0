@@ -11,38 +11,69 @@ import "./profile.css";
 class Profile extends Component{
     state = {
         wishlist: [],
-        currentUser: [],
+        user: {},
+        error: null,
+        authenticated: false,
         totalprice: [],
         message: "Add Sneakers To Your Wishlist"
     };
 
     // loads wishlisht on page load
     componentDidMount = () => {
-        // this.getCurrentUser();
-        return this.loadUserWishlist();
+        fetch("http://localhost:3001/oauth/login/success", {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            }
+        })
+        .then(response => {
+            if (response.status === 200) return response.json();
+            throw new Error("failed to authenticate user");
+        })
+        .then(responseJson => {
+            let priceArr = responseJson.user.wishlist.map(wishlistObj => wishlistObj.retailPrice);
+            console.log("responseJson inside componentDidMount: ", responseJson.user);
+            this.setState({
+                authenticated: true,
+                user: responseJson.user,
+                wishlist: responseJson.user.wishlist,
+                totalprice: priceArr
+            });
+        })
+        .catch(error => {
+            this.setState({
+                authenticated: false,
+                error: "Failed to authenticate user"
+            })
+        })
+        // this.getuser();
+        // return this.loadUserWishlist();
     };
 
     // gets the user wishlist by their googleId
-    loadUserWishlist = () => {
-        API.getWishlist()
-            .then(res => {
-                console.log("res.data[0].wishlist[0] - inside loadUserWishlist: ", res.data[0].wishlist[0]);
-                console.log("res.data[0].username - inside loadUserWishlist: ", res.data[0].username);
-                console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice));
-                let priceArr = res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice);
-                return this.setState({
-                    wishlist: res.data[0].wishlist,
-                    currentUser: res.data[0].username,
-                    totalprice: priceArr
-                });
-            })
-            .catch(() =>
-                this.setState({
-                    wishlist: [],
-                    message: "No Sneakers Found"
-                })
-            );
-    };
+    // loadUserWishlist = () => {
+    //     API.getWishlist()
+    //         .then(res => {
+    //             console.log("res.data[0].wishlist[0] - inside loadUserWishlist: ", res.data[0].wishlist[0]);
+    //             console.log("res.data[0].username - inside loadUserWishlist: ", res.data[0].username);
+    //             console.log("map data sneakerPrice arr - inside loadUserWishlist: ", res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice));
+    //             let priceArr = res.data[0].wishlist.map(wishlistObj => wishlistObj.retailPrice);
+    //             return this.setState({
+    //                 wishlist: res.data[0].wishlist,
+    //                 user: res.data[0].username,
+    //                 totalprice: priceArr
+    //             });
+    //         })
+    //         .catch(() =>
+    //             this.setState({
+    //                 wishlist: [],
+    //                 message: "No Sneakers Found"
+    //             })
+    //         );
+    // };
 
     // deletes sneaker from collection with googleId matching current user as well as sneaker
     removeSneaker = id => {
@@ -59,11 +90,12 @@ class Profile extends Component{
 
 
     render() {
+        const { authenticated } = this.state;
         return (
             <div>
                 <Navy />
                     <Container style={{paddingTop: 100}}>
-                        <h1>{this.state.currentUser}'s Virtual Closet</h1>
+                        <h1>{this.state.user.username}'s Virtual Closet</h1>
                         {this.state.totalprice.length ? (
                             <Col sm="3" className="mb-5 text-center mx-auto">
                                 <Card style={{borderColor: 'green', borderStyle: 'ridge', borderWidth: '4px'}}>

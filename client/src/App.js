@@ -24,8 +24,8 @@ function App() {
         <Switch>
           <Route exact path={"/"} component = { Login } />
           <Route exact path={"/signup"} component = { SignUp } />
-          <ProtectedRoute exact path={"/profile"} component = { Profile } />
-          <ProtectedRoute exact path={"/browsing"} component = { Browsing } />
+          <Route exact path={"/profile"} component = { Profile } />
+          <Route exact path={"/browsing"} component = { Browsing } />
         </Switch>
       </div>
     </Router>

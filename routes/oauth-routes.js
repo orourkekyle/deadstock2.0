@@ -3,6 +3,27 @@ const passport = require("passport");
 
 console.log("HIT: oauth-routes");
 
+// when login is successful, retrieve user info
+router.get("/login/success", (req, res) => {
+    console.log("this is req.user inside /login/success: ", req.user);
+    if (req.user) {
+        res.json({
+            success: true,
+            message: "user has successfully authenticated",
+            user: req.user,
+            cookies: req.cookies
+        });
+    }
+});
+
+// when login failed, send msg
+router.get("/login/failed", (req, res) => {
+    res.status(401).json({
+        success: false,
+        message: "user failed to authenticate"
+    });
+});
+
 // auth logout
 router
 .route("/logout")
@@ -22,25 +43,11 @@ router
     console.log("hitting /google route");
 } );
 
-
-// const authCheck = (req, res, next) => {
-//     console.log("req.user: ", req);
-//     if(!req.user){
-//         // if user is NOT logged in
-//         res.redirect("/oauth/login");
-//         // res.redirect("/singup");
-//     }else {
-//         // if user IS logged in
-//         next();
-//     }
-// };
-
-
 // cb route for google to redirect to
 router
 .route('/google/redirect')
 .get(passport.authenticate("google"), (req, res) => {
-    console.log("req.hostname inside redirect route:", req.hostname);
+    // console.log("req.hostname inside redirect route:", req.hostname);
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
     redirectPath = `${redirectPath}/profile`;
     // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
