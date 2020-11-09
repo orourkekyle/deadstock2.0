@@ -52,7 +52,7 @@ router
     let redirectPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com' : 'http://localhost:3000'
     redirectPath = `${redirectPath}`;
     // redirectPath = `${redirectPath}/profile?userId=${req.user.googleId}`
-    res.redirect(redirectPath);
+    res.redirect(`${redirectPath}/profile`);
     // res.sendFile(path.join(__dirname, 'client/build/index.html'));
     // res.redirect("http://localhost:3000")
 })
