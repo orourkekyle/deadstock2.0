@@ -4,9 +4,30 @@ import "./Login.css";
 // import { Container, Row, Col } from "../components/Grid";
 import { Row, Col, Container } from "reactstrap";
 import { FormBtn } from "../components/Form";
+import Profile from "./Profile";
 
 
 class Login extends Component {
+
+    // componentDidMount = (props) => {
+    //     fetch("http://localhost:3001/", {
+    //       method: "GET",
+    //       credentials: "include",
+    //       headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //         "Access-Control-Allow-Credentials": true
+    //       }
+    //     })
+    //     .then(response  => {
+    //       if (response.status === 200) {
+    //         //   render(<Profile />);
+    //         // return (<Redirect push to="/profile" />);
+    //         return props.history.push("/profile");
+    //       }
+    //     })
+    //   }
+    
     
     loginPath = (process.env.NODE_ENV === 'production') ? 'https://deadstock2.herokuapp.com/oauth/google' : 'http://localhost:3001/oauth/google';
 

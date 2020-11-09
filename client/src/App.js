@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Browsing from './pages/Browsing';
@@ -7,14 +7,13 @@ import SignUp from "../src/pages/SignUp";
 // import API from "./utils/API.js";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { NavbarText } from 'reactstrap';
+import { Router, Redirect } from 'react-router';
 
 class App extends Component {
 
-  // state = {
-  //   user: {},
-  //   authenticated: false,
-  //   error: null,
-  // };
+  state = {
+    redirect: false
+  };
 
   componentDidMount = () => {
     fetch("http://localhost:3001/", {
@@ -28,14 +27,30 @@ class App extends Component {
     })
     .then(response  => {
       if (response.status === 200) {
-        redirect("/profile");
+        return this.setState({
+          redirect: true
+        })
+      } else {
+        return this.setState({
+          redirect: false
+        })
       }
+    })
+    .catch(error => {
+      console.log("Error authenticating user: ", error);
     })
   }
 
   render() {
+    const {redirect} = this.state;
+
+    if (redirect) {
+      return (<BrowserRouter><Redirect to="/profile" /></BrowserRouter>)
+    }
+
+
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <Switch>
             <Route exact path={"/"} component={Login} />
@@ -44,8 +59,9 @@ class App extends Component {
             <Route exact path={"/browsing"} component={Browsing} />
           </Switch>
         </div>
-      </Router>
+      </BrowserRouter>
     );
+    
   }
 }
 export default App;
